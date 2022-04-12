@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title style="color: green;">Arnav-Katan</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+
+    <style>
+        body {background-color: darkcyan; font-weight: bold; }
+        h1   {color:white; text-shadow: 2px 2px 8px black; font-weight: bold;}
+        h5   {color: deeppink;  text-shadow: 3px 5px 12px black; font-weight: bold;}
+        h3   {color:white; text-shadow: 2px 2px 8px black; font-weight: bold;}
+        h6  {color: white;  text-shadow: 3px 2px 12px deeppink; font-weight: bold;}
+        p    {color: white;  text-shadow: 3px 2px 8px black; font-weight: bold;}
+
+        .p_fun    {color: deeppink;  text-shadow: 3px 2px 8px black; font-weight: bold;}
+        textarea    {  }
+
+    </style>
+</head>
+<body>
+<aside class="sidebar pos-absolute z-2"
+       data-role="sidebar"
+       data-toggle="#sidebar-toggle-3"
+       id="sb3"
+       data-shift=".shifted-content">
+    <div class="sidebar-header" data-image="images/sb-bg-1.gif">
+        <span class="title bg-blue fg-white"> <b>Python Hacking</b><br/></span>
+        <hr/>
+        <span class="subtitle fg-purple"><b>2022 © Daniel Yacobi</b></span>
+    </div>
+    <ul class="sidebar-menu">
+        <li  id="homeScreen"><a><span class="mif-home icon" ></span>home</a></li>
+        <li class="group-title">start here</li>
+        <li class="divider"></li>
+        <li id="scanScreen"><a><span class="mif-eye icon"></span>scan the network</a></li>
+        <li id="resultScreen"><a><span class="mif-table icon"></span>Result</a></li>
+        <li id="simpleScreen"><a><span class="mif-bubbles icon"></span>simple TCP connection</a></li>
+        <li class="group-title">stage two</li>
+        <li class="divider"></li>
+        <li id="trojanScreen"><a><span class="mif-gift icon"></span>create trojan</a></li>
+        <li id="activateScreen"><a><span class="mif-heartbeat icon"> </span>activate trojan</a></li>
+        <li id="httpScreen"><a><span class="mif-injection icon"></span>https commands</a></li>
+        <li id="keyScreen"><a><span class="mif-gamepad icon"></span>key logers</a></li>
+        <li id="watchdogScreen"><a><span class="mif-paw icon"></span>set watchdog</a></li>
+        <li class="divider"></li>
+        <li id="exitScreen"><a><span class="mif-exit icon"></span>exit</a></li>
+    </ul>
+</aside>
+<div class="shifted-content h-100 p-ab">
+    <div class="app-bar pos-absolute bg-blue z-1" data-role="appbar">
+        <button class="app-bar-item c-pointer" id="sidebar-toggle-3">
+            <span class="mif-menu fg-white"></span>
+        </button>
+
+
+        <div class="container z-1">
+            <section id="sectionStart">
+            <h1>ITSAFE PYTHON ATTACK TOOLBOX PROJECT</h1>
+            <p>This is my little graduate software for my studies at itsafe.co.il.<br/> Hope it's good enough ;)</p>
+            <h5> <--- select option from the manu, follow the instruction from the 'home' tab</h5>
+            </section>
+        </div>
+    </div>
+        <section id="sectionHome" style="display: none;">
+             <div class="app-bar pos-absolute bg-blue z-1" data-role="appbar">
+                <h1>GETTING START INSTRUCTIONS</h1>
+             </div><br/><br/>
+             <div class="grid">
+                <div class="row">
+                    <div class="cell-8 offset-3">
+                        <hr/><br/><br/>
+                        <p>1.first scan the network.</p>
+                        <p>2.create simple TCP connection.</p>
+                        <p>3.create torjans</p>
+                        <p>4.send trojan and activate the trojans</p>
+                        <p>5.wait for secure https connections</p>
+                        <p class="p_fun"> Have Fun!</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+        <div class="container z-1">
+            <section id="sectionScan" style="display: none;">
+                <div class="grid">
+                    <div class="row">
+                        <div class="cell-8 offset-1">
+                             <div class="app-bar pos-absolute bg-blue z-1" data-role="appbar">
+                                <h3>SCANNING THE NETWORK</h3>
+                             </div><br/><br/>
+                            <h5> press search for network search or enter your ip to scan the network</h5>
+                            <h6 class="h6networks" style="display:none;">Networks:  </h6>
+                            <input id="getIP" type="text" data-role="materialinput" data-icon="<span class='mif-laptop'>" data-label="Enter your network IP address"/>
+                            <button  class="button drop-shadow info btnSearch" onclick="search_ip();">Search</button>
+                            <button  id="btnScan" class="button drop-shadow info" onclick="start_scan();">Scan</button>
+                        </div>
+                    </div>
+                </div>
+             </section>
+            <div class="container z-1">
+                <section id="sectionResult" style="display: none;">
+                    <div class="grid">
+                        <div class="row">
+                            <div class="cell-8 offset-1">
+                                <div class="app-bar pos-absolute bg-blue z-1" data-role="appbar">
+                                    <h3>SCAN RESULT</h3>
+                                </div><br/><br/>
+                                <h5>Scan Result</h5>
+                                 <hr/>
+                            </div>
+                        </div>
+                    </div>
+                    <ul data-role="treeview" id="resultView">
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+    <section id="sectionSimple" style="display: none;">
+        <div class="app-bar pos-absolute bg-blue z-1" data-role="appbar">
+             <h1 style="color:white; text-shadow: 5px 5px 10px black; text-align: center">SIMPLE TCP CONNECTION</h1>
+        </div><br/><br/><br/><br/>
+        <div class="container z-1">
+            <div class="grid">
+                <div class="row">
+                    <div class="cell-8 offset-1 ">
+                        <h5 class="h">  search for networks: </h5>
+                        <button class="button drop-shadow info btnSearch" onclick="search_ip();">Search</button>
+                        <h6 class="h6networks" style="display:none;">Networks:  </h6> <hr/>
+                        <h5>enter [ip:port] to listen on for clients:</h5>
+                        <h5 sytle="color:white; text-shadow: 2px 2px 8px black; font-weight: bold;">or leave empty for default values ([auto ip]:[port 8080]) </h5>
+                        <input id="inpNetwork" type="text" placeholder="( example: 192.168.1.100:8080 )">
+                        <button  id="btnSimple" class="button drop-shadow info" onclick="get_ip();">Start</button>
+                        <section id="sectionSimple2" style="display: none;" >
+                        <h5 id="simpleView"></h5> <br/><br/>
+                        <h5>enter custom commands: (or enter 'help' for usage guide) </h5><br/>
+                        <input id="command" type="text" data-role="materialinput" placeholder="Enter your command" data-icon="<span class='mif-laptop'>" data-label="Enter a command">
+                        <button  id="btnTCPCommand" class="button drop-shadow info" onclick="conn_TCP();">send command</button>
+                        <br/>
+                        <textarea id="TCP_response" rows="15" cols="100" data-default-value="client response:    (move arrows on textarea to expand)..." data-cls-textarea="bg-darkCyan fg-white rows=10"  data-cls-prepend = "bg-light" data-clear-button-icon="<span class='mif-cross fg-white'></span>"> </textarea >
+                    </section>
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="sectionTrojans" style="display: none;">
+        <div class="app-bar pos-absolute bg-blue z-1" data-role="appbar">
+             <h1 style="color:white; text-shadow: 5px 5px 10px black;">CREATE TROJANS</h1>
+        </div><br/><br/><br/><br/>
+        <div class="container z-1">
+            <div class="grid">
+                <div class="row">
+                    <div class="cell-8 offset-1 "><br/>
+                        <h5>choose os for the trojan:</h5>
+                        <select id="inpTrojan" data-role="select" data-cls-option="fg-blue">
+                            <option value="Windows" data-template="<span class='mif-windows icon'></span> $1">Windows</option>
+                            <option value="Darwin" data-template="<span class='mif-apple icon'></span> $1">Darwin</option>
+                            <option value="Linux" data-template="<span class='mif-linux icon'></span> $1">Linux</option>
+                        </select>
+                        <br/>
+                        <button  id="btnTrojan" class="button drop-shadow info" onclick="create_trojan();">Create</button>
+                        <hr/>
+                        <h5>enter DDNS address and port: </h5><br/>
+                        <textarea id="trojanText" data-role="textarea" data-default-value="Examle: Arnav-lavan.no-ip.com:8888 / 192.168.1.5:8888" data-cls-textarea="bg-darkCyan fg-white rows=10"  data-cls-prepend = "bg-light" data-clear-button-icon="<span class='mif-cross fg-white'></span>"> </textarea >
+                        <section id="afterTrojan">
+                            <h5 -d="afterTrojan" style="display:none;">Great Work, now go back to TCP tab and send them</h5>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <h1 class="goodbye" style="display: none;"> GOOD-BYE</h1>
+    <h6 class="goodbye" style="display: none;"> please close the window.... :)</h6>
+</div>
+
+
+
+
+<script>
+    var progress = null;
+
+    function taskStart(value){
+        progress = Metro.activity.open({
+            type: 'bars',
+            overlayColor: '#fff',
+            overlayAlpha: 1,
+            text: value,
+            overlayClickClose: true
+        });
+    }
+
+    eel.expose(taskEnd);
+    function taskEnd() {
+        Metro.activity.close(progress);
+    }
+
+    $("#homeScreen").on("click",function () {
+        $("#sectionSimple").fadeOut('500');
+        $("#sectionTrojan").fadeOut('500');
+        $("#sectionScan").fadeOut('500');
+        $("#sectionResult").fadeOut('500');
+        $("#sectionStart").fadeOut('500');
+        $("#sectionHome").fadeIn('500');
+    })
+
+     $("#scanScreen").on("click",function () {
+
+        $("#sectionTrojan").fadeOut('500');
+        $("#sectionSimple").fadeOut('500');
+        $("#sectionStart").fadeOut('500');
+        $("#sectionResult").fadeOut('500');
+        $("#sectionScan").delay(250).fadeIn('500');
+    })
+
+    $("#resultScreen").on("click",function () {
+        $("#sectionTrojan").fadeOut('500');
+        $("#sectionSimple").fadeOut('500');
+        $("#sectionStart").fadeOut('500');
+        $("#sectionResult").delay(250).fadeIn('500');
+
+    })
+
+    $("#simpleScreen").on("click",function () {
+        $("#sectionTrojan").fadeOut('500');
+        $("#sectionScan").fadeOut('500');
+        $("#sectionResult").fadeOut('500');
+        $("#sectionStart").fadeOut('500');
+        $("#sectionHome").fadeOut('500');
+        $("#sectionSimple").delay(250).fadeIn('500');
+    })
+
+    $("#exitScreen").on("click",function () {
+        $("#sectionSimple").fadeOut('500');
+        $("#sectionScan").fadeOut('500');
+        $("#sectionResult").fadeOut('500');
+        $("#sectionStart").fadeOut('500');
+        $("#sectionTrojan").fadeOut('500');
+        $("#sectionHome").fadeOut('500');
+        $(".goodbye").fadeIn('500');
+        eel.eel_exit()
+    })
+
+     $("#httpScreen").on("click",function () {
+        $("#sectionSimple").fadeOut('500');
+        $("#sectionScan").fadeOut('500');
+        $("#sectionResult").fadeOut('500');
+        $("#sectionStart").fadeOut('500');
+        $("#sectionTrojan").fadeOut('500');
+        $("#sectionHome").fadeOut('500');
+        $("#httpScreen").fadeIn('500');
+
+    })
+
+    $("#trojanScreen").on("click",function () {
+        $("#sectionSimple").fadeOut('500');
+        $("#sectionScan").fadeOut('500');
+        $("#sectionResult").fadeOut('500');
+        $("#sectionStart").fadeOut('500');
+        $("#sectionTrojan").fadeOut('500');
+        $("#sectionHome").fadeOut('500');
+        $("#sectionTrojans").fadeIn('500');
+
+    })
+
+    async function search_ip() {
+            var value = "searching for networks... please wait..."
+            taskStart(value);
+            const  result = await eel.search_ip()();
+            for (item of result){
+                $(".h6networks").append(`<span>  ${result},  </span>`);
+            }
+            taskEnd();
+            $(".h6networks").delay(250).fadeIn('500');
+        }
+
+    async function start_scan() {
+            var value = "scanning... please wait..."
+            taskStart(value);
+            let resualt = await eel.start_scan($("#getIP").val())();
+            for (item of resualt){
+                $("#resultView").append(`<li>${resualt}</li>`);
+            }
+            taskEnd();
+            $("#sectionResult").delay(250).fadeIn('500');
+        }
+
+    async function get_ip() {
+        var value = "waiting for connections... please wait...or press mouse for cancel"
+        taskStart(value);
+        let str1 = await eel.get_ip($("#inpNetwork").val())();
+        $("#simpleView").append(`<span>${str1}</span>`);
+        taskEnd();
+        $("#sectionSimple2").delay(250).fadeIn('500');
+    }
+
+
+    async function conn_TCP() {
+        var answer = await eel.conn_TCP($("#command").val())();
+        document.getElementById("TCP_response").value= answer;
+    }
+
+    async function create_trojan() {
+        var value = "creating trojan... please wait..."
+        taskStart(value);
+        let str1 = await eel.create_trojan($("#inpTrojan").val())();
+        document.getElementById("trojanText").value= str1;
+        taskEnd();
+        $("#sectionSimple2").delay(250).fadeIn('500');
+    }
+
+</script>
+
+
+</body>
+</html>
